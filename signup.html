@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color:#002c3e;
+}
+
+.midbox {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.boxform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boxform div {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.boxform label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.boxform input[type="text"], .boxform input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+.btn button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #45a049;
+}
+
+p {
+    margin-top: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p a {
+    color:#45a049;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <div class="midbox">
+        <h2>SIGN UP</h2>
+        <div class="boxform">
+            <form id="fi" onsubmit="return val()" action="signup.php" method="post">
+                <div>
+                    <label>Enter Username:</label><br><input type="text" name="usrnm" id="usrnm">
+                </div>
+                <div>
+                    <label>Enter Password:</label><br><input type="password" name="pwd" id="pwd">
+                </div>
+                <div>
+                    <label>Re-enter Password:</label><br><input type="password" name="pwd1" id="pwd1">
+                </div>
+                <div class="btn">
+                    <button type="submit">Register</button>
+                </div>
+                <div>
+                    <p style="font-family: 'Courier New', Courier, monospace;">Have an Account?<a href="index.php">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function val(){
+        var usrnm = document.getElementById('usrnm').value.trim();
+        var pwd = document.getElementById('pwd').value.trim();
+        var pwd1 = document.getElementById('pwd1').value.trim();
+        
+        if (usrnm === "") {
+            alert("Enter Username");
+            return false;
+        }
+        if (pwd === "") {
+            alert("Enter Password");
+            return false;
+        }
+        if (pwd1 === "") {
+            alert("Re-Enter Password");
+            return false;
+        }
+        if (pwd !== pwd1) {
+            alert("Passwords don't match");
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

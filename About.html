@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Video</title>
+</head>
+<body>
+    <h2>Upload Video</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label>Upload Video</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            let formData = new FormData();
+            let fileField = document.querySelector('input[type="file"]');
+
+            formData.append('file', fileField.files[0]);
+
+            fetch('upload.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('message').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('message').innerHTML = 'Error: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>
